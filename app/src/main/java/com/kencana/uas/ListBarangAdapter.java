@@ -1,5 +1,6 @@
 package com.kencana.uas;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,13 +27,13 @@ public class ListBarangAdapter extends RecyclerView.Adapter<ListBarangAdapter.li
     private ArrayList<Barang> listBarang;
     private ArrayList<Barang> listBarangfull;
 
-    public ListBarangAdapter(ArrayList<Barang> list){
+    ListBarangAdapter(ArrayList<Barang> list){
         this.listBarang = list;
         listBarangfull = new ArrayList<>(listBarang);
     }
 
     private OnItemClickCallback onItemClickCallback;
-    public void setOnItemClickCallback(OnItemClickCallback onItemClickCallback){
+    void setOnItemClickCallback(OnItemClickCallback onItemClickCallback){
         this.onItemClickCallback = onItemClickCallback;
     }
 
@@ -43,12 +44,13 @@ public class ListBarangAdapter extends RecyclerView.Adapter<ListBarangAdapter.li
         return new listViewHolder(view);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull final listViewHolder holder, int position) {
         Barang barang = listBarang.get(position);
         Glide.with(holder.itemView.getContext())
                 .load(barang.getItemImage())
-                .apply(new RequestOptions().override(55,55))
+                .apply(new RequestOptions().override(200,200))
                 .into(holder.iv_gambar_show);
         holder.tv_kodeBarang_show.setText(barang.getItemId());
         holder.tv_namaBarang_show.setText(barang.getItemName());
@@ -71,12 +73,12 @@ public class ListBarangAdapter extends RecyclerView.Adapter<ListBarangAdapter.li
         return listBarang.size();
     }
 
-    public class listViewHolder extends RecyclerView.ViewHolder {
+    class listViewHolder extends RecyclerView.ViewHolder {
         ImageView iv_gambar_show;
         TextView tv_kodeBarang_show, tv_namaBarang_show, tv_satuan_show, tv_jumlahBarang_show, tv_hargaBarang_show;
         RelativeLayout rlparent;
 
-        public listViewHolder(@NonNull View itemView) {
+        listViewHolder(@NonNull View itemView) {
             super(itemView);
             iv_gambar_show = itemView.findViewById(R.id.iv_gambar_show);
             tv_kodeBarang_show = itemView.findViewById(R.id.tv_kodeBarang_show);
