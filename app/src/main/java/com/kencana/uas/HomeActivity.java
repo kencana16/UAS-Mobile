@@ -1,7 +1,9 @@
 package com.kencana.uas;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -52,8 +54,28 @@ public class HomeActivity extends AppCompatActivity {
         btnExit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
-                System.exit(0);
+                AlertDialog.Builder builder = new AlertDialog.Builder(HomeActivity.this);
+                builder.setCancelable(true);
+                builder.setTitle("Peringatan");
+                builder.setMessage("Yakin ingin Keluar");
+                builder.setPositiveButton("Keluar",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                finish();
+                                System.exit(0);
+                            }
+                        });
+                builder.setNegativeButton("Batal",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
+                        });
+                AlertDialog dialog = builder.create();
+                dialog.show();
+
             }
         });
 
