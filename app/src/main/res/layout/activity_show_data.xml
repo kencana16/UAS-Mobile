@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="5dp"
+    tools:context=".ShowDataActivity"
+    android:orientation="vertical">
+
+    <TableLayout
+        android:id="@+id/tabel"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:isScrollContainer="true">
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent" >
+            <TextView
+                style="@style/thead"
+                android:layout_width="50dp"
+                android:text="Gambar"/>
+            <TextView
+                style="@style/thead"
+                android:layout_width="50dp"
+                android:text="Kode Barang"/>
+            <TextView
+                style="@style/thead"
+                android:layout_width="100dp"
+                android:text="Nama Barang"/>
+            <TextView
+                style="@style/thead"
+                android:layout_width="40dp"
+                android:text="Satuan"/>
+            <TextView
+                style="@style/thead"
+                android:layout_width="25dp"
+                android:text="Jml"
+                android:textAlignment="textEnd"/>
+            <TextView
+                style="@style/thead"
+                android:layout_width="80dp"
+                android:text="Harga"
+                android:textAlignment="textEnd"/>
+        </TableRow>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_dataBarang"
+            tools:listitem="@layout/item_row_barang"/>
+    </TableLayout>
+
+</LinearLayout>

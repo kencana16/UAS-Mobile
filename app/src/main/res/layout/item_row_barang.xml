@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent" >
+        <ImageView
+            android:id="@+id/iv_gambar_show"
+            style="@style/tbody"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:padding="2dp"
+            tools:src="@mipmap/ic_launcher_round"/>
+        <TextView
+            android:id="@+id/tv_kodeBarang_show"
+            style="@style/tbody"
+            android:layout_width="50dp"
+            tools:text="L001"/>
+        <TextView
+            android:id="@+id/tv_namaBarang_show"
+            style="@style/tbody"
+            android:layout_width="100dp"
+            tools:text="Laptop Toshiba"/>
+        <TextView
+            android:id="@+id/tv_satuan_show"
+            style="@style/tbody"
+            android:layout_width="40dp"
+            tools:text="Unit"/>
+        <TextView
+            android:id="@+id/tv_jumlahBarang_show"
+            style="@style/tbody"
+            android:layout_width="25dp"
+            tools:text="30"
+            android:textAlignment="textEnd"/>
+        <TextView
+            android:id="@+id/tv_hargaBarang_show"
+            style="@style/tbody"
+            android:layout_width="80dp"
+            tools:text="Rp. 3.000.000.000"
+            android:textAlignment="textEnd"/>
+    </TableRow>
+
+</LinearLayout>
