@@ -30,12 +30,13 @@ import java.util.Objects;
 
 public class AddDataActivity extends AppCompatActivity {
 
+    //inisialisasi variabel
     TextInputEditText ti_kodeBarang, ti_namaBarang, ti_satuan,ti_jumlahBarang,ti_hargaBarang,ti_deskripsi;
     TextInputLayout til_kodeBarang, til_namaBarang, til_satuan,til_jumlahBarang,til_hargaBarang,til_deskripsi;
     Button btn_back,btn_save;
     ImageView iv_gambar;
 
-    final int REQUEST_CODE_GALLERY = 999;
+    final int REQUEST_CODE_GALLERY = 999;       //request code untuk buka galeri
 
 
 
@@ -70,7 +71,7 @@ public class AddDataActivity extends AppCompatActivity {
 
 
 
-        //select image by on imageview click
+        //Pilih gambar ketika gambar di klik
         iv_gambar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -96,6 +97,7 @@ public class AddDataActivity extends AppCompatActivity {
                 til_hargaBarang.setErrorEnabled(false);
                 til_hargaBarang.setError(null);
 
+                //check error
                 if(Objects.requireNonNull(ti_kodeBarang.getText()).toString().isEmpty() || ti_jumlahBarang.getText().toString().isEmpty() || ti_hargaBarang.getText().toString().isEmpty()){
                     if(ti_kodeBarang.getText().toString().isEmpty()){
                         til_kodeBarang.setErrorEnabled(true);
@@ -111,7 +113,7 @@ public class AddDataActivity extends AppCompatActivity {
                     }
                 }else {
                     try {
-
+                        //insert data to DB
                         HomeActivity.mSQLiteHelper.insertData(
                                 ti_kodeBarang.getText().toString().trim(),
                                 ti_namaBarang.getText().toString().trim(),
@@ -123,7 +125,6 @@ public class AddDataActivity extends AppCompatActivity {
                         );
                         Toast.makeText(AddDataActivity.this, "Record Berhasil Ditambahkan", Toast.LENGTH_SHORT).show();
                         //reset views
-
                         ti_kodeBarang.setText("");
                         ti_namaBarang.setText("");
                         ti_satuan.setText("");
@@ -138,6 +139,7 @@ public class AddDataActivity extends AppCompatActivity {
             }
         });
 
+        //button back
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -148,6 +150,7 @@ public class AddDataActivity extends AppCompatActivity {
 
     }
 
+    //convert image to byte[]
     public static byte[] imageViewToByte(ImageView image) {
         Bitmap bitmap = ((BitmapDrawable)image.getDrawable()).getBitmap();
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
@@ -156,6 +159,7 @@ public class AddDataActivity extends AppCompatActivity {
         return byteArray;
     }
 
+    //open request to storage
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         if (requestCode == REQUEST_CODE_GALLERY){
@@ -173,6 +177,7 @@ public class AddDataActivity extends AppCompatActivity {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
+    //if request granted
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
@@ -198,6 +203,7 @@ public class AddDataActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
     }
 
+    //hide keyboard when touch other view
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         if (getCurrentFocus() != null) {

@@ -36,6 +36,7 @@ public class ShowDataActivity extends AppCompatActivity {
 
 
         //////////////////////////////////////////////
+        ///mengambil dari database dimasukkan ke array list dengan bantuan objek cursor
         Cursor cursor = HomeActivity.mSQLiteHelper.getData("SELECT * FROM BARANG");
         list.clear();
 

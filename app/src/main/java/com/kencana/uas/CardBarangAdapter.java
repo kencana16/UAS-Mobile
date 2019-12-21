@@ -18,20 +18,25 @@ import com.bumptech.glide.request.RequestOptions;
 import java.util.ArrayList;
 import java.util.List;
 
+//implement filterable digunakan untuk mengaktifkan fungsi filter(pencarian)
 public class CardBarangAdapter extends RecyclerView.Adapter<CardBarangAdapter.listViewHolder> implements Filterable {
+    //initial list
     private ArrayList<Barang> listBarang;
     private ArrayList<Barang> listBarangfull;
 
+    //construct
     public CardBarangAdapter(ArrayList<Barang> list){
         this.listBarang = list;
         listBarangfull = new ArrayList<>(listBarang);
     }
 
+    //when card view clicked
     private OnItemClickCallback onItemClickCallback;
     public void setOnItemClickCallback(OnItemClickCallback onItemClickCallback){
         this.onItemClickCallback = onItemClickCallback;
     }
 
+    //set inflater
     @NonNull
     @Override
     public listViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
@@ -39,6 +44,7 @@ public class CardBarangAdapter extends RecyclerView.Adapter<CardBarangAdapter.li
         return new listViewHolder(view);
     }
 
+    //add data to view
     @Override
     public void onBindViewHolder(@NonNull final listViewHolder holder, int position) {
         Barang barang = listBarang.get(position);
@@ -60,15 +66,16 @@ public class CardBarangAdapter extends RecyclerView.Adapter<CardBarangAdapter.li
 
     }
 
+    //count all data to show in recyclerview
     @Override
     public int getItemCount() {
         return listBarang.size();
     }
 
+    //init item from layout inflater
     public class listViewHolder extends RecyclerView.ViewHolder {
         ImageView iv_gambar_sell;
         TextView  tv_namaBarang_sell, tv_jumlahBarang_sell, tv_hargaBarang_sell;
-        RelativeLayout rlparent;
 
         public listViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -84,19 +91,23 @@ public class CardBarangAdapter extends RecyclerView.Adapter<CardBarangAdapter.li
         void onItemClicked(Barang data);
     }
 
+    //filter(pencarian)
     @Override
     public Filter getFilter() {
         return barangFilter;
     }
 
+    //method filter
     private Filter barangFilter = new Filter() {
         @Override
         protected FilterResults performFiltering(CharSequence constraint) {
             List<Barang> filteredList = new ArrayList<>();
 
+            // jika tidak tertulis apa2 di searchview
             if(constraint == null || constraint.length() == 0){
                 filteredList.addAll(listBarangfull);
             }else{
+                //jika terdapat character pada searchview
                 String filterPattern = constraint.toString().toLowerCase().trim();
 
                 for(Barang item: listBarangfull){
@@ -111,6 +122,7 @@ public class CardBarangAdapter extends RecyclerView.Adapter<CardBarangAdapter.li
             return results;
         }
 
+        //fungsi realtime searching
         @Override
         protected void publishResults(CharSequence constraint, FilterResults results) {
             listBarang.clear();

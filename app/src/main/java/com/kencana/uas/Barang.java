@@ -4,6 +4,7 @@ public class Barang {
     private String ItemId, ItemName, ItemDenomination, ItemQuantity, ItemPrice, Description;
     private byte[] ItemImage;
 
+
     public Barang(String ItemId, String ItemName,String ItemDenomination,String ItemQuantity,String ItemPrice,byte[] ItemImage, String Description){
         this.ItemId = ItemId;
         this.ItemName = ItemName;

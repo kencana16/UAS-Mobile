@@ -113,7 +113,7 @@ public class EditDataActivity extends AppCompatActivity {
                     }
                 }else {
                     try {
-
+                        //update data ke database
                         HomeActivity.mSQLiteHelper.updateData(
                                 ti_namaBarang.getText().toString().trim(),
                                 ti_satuan.getText().toString().trim(),
@@ -136,7 +136,7 @@ public class EditDataActivity extends AppCompatActivity {
                 }
             }
         });
-
+        //tombol kembali
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -146,7 +146,7 @@ public class EditDataActivity extends AppCompatActivity {
     }
 
     public void ambilData(){
-
+        //format number ###.###.###
         NumberFormat nf = NumberFormat.getNumberInstance();
         nf.setMaximumFractionDigits(0);
 
@@ -177,6 +177,7 @@ public class EditDataActivity extends AppCompatActivity {
 
     }
 
+    //mengubah gambar ke byte[]
     public static byte[] imageViewToByte(ImageView image) {
         Bitmap bitmap = ((BitmapDrawable)image.getDrawable()).getBitmap();
         ByteArrayOutputStream stream = new ByteArrayOutputStream();

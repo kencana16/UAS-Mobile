@@ -32,6 +32,7 @@ public class SellDataActivity extends AppCompatActivity {
 
 
         //////////////////////////////////////////////
+        ///mengambil dari database dimasukkan ke array list dengan bantuan objek cursor
         Cursor cursor = HomeActivity.mSQLiteHelper.getData("SELECT * FROM BARANG");
         list.clear();
 
@@ -60,6 +61,7 @@ public class SellDataActivity extends AppCompatActivity {
         showRecyclerList();
     }
 
+    //menampilkan recyclerview
     private void showRecyclerList(){
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 2);
         recyclerView.setLayoutManager(mLayoutManager);
@@ -73,6 +75,8 @@ public class SellDataActivity extends AppCompatActivity {
             }
         });
     }
+
+    //ketika item recycler di klik
     private void showSelectedBarang(Barang barang) {
         Toast.makeText(this, barang.getItemId(), Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(SellDataActivity.this, DetailSellActivity.class);
@@ -81,6 +85,7 @@ public class SellDataActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    //tombol search di action bar
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();

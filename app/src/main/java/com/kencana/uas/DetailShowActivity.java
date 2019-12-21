@@ -71,6 +71,7 @@ public class DetailShowActivity extends AppCompatActivity {
         Bitmap bmp = BitmapFactory.decodeByteArray(image, 0, image.length);
         iv_gambar_detail.setImageBitmap(bmp);
 
+        //tombol delete dan confirm alert
         btn_delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -100,6 +101,7 @@ public class DetailShowActivity extends AppCompatActivity {
             }
         });
 
+        //fungsi tombol edit menuju activity EditDataActivity
         btn_edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

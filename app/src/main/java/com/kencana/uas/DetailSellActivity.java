@@ -19,19 +19,22 @@ import java.text.NumberFormat;
 
 public class DetailSellActivity extends AppCompatActivity {
 
+    //init variable
     TextView tv_namaBarang_detail, tv_kodeBarang_detail, tv_jumlahBarang_detail,
             tv_satuan_detail, tv_hargaBarang_detail, tv_deskripsi_detail, tv_jmlBeli, tv_jmlHarga;
     ImageView iv_gambar_detail;
     String nama,kodeBarang, satuan, jumlah, harga, deskripsi;
     byte[] image;
     Button plus, minus, buy;
-    @SuppressLint("SetTextI18n")
+
+    @SuppressLint("SetTextI18n")        //to allow string+variable
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_sell);
 
-
+        //init item from xml view
         tv_namaBarang_detail =  findViewById(R.id.tv_namaBarang_detailSell);
         tv_kodeBarang_detail = findViewById(R.id.tv_kodeBarang_detailSell);
         tv_jumlahBarang_detail =  findViewById(R.id.tv_jumlahBarang_detailSell);
@@ -45,6 +48,7 @@ public class DetailSellActivity extends AppCompatActivity {
         minus =  findViewById(R.id.minus);
         buy =  findViewById(R.id.btn_beli);
 
+        //format number jadi ###.###.###
         NumberFormat nf = NumberFormat.getNumberInstance();
         nf.setMaximumFractionDigits(0);
 
@@ -63,6 +67,7 @@ public class DetailSellActivity extends AppCompatActivity {
             this.deskripsi = cursor.getString(6);
         }
 
+        //menuliskan ke xml view
         tv_namaBarang_detail.setText(nama);
         tv_kodeBarang_detail.setText(kodeBarang);
         tv_jumlahBarang_detail.setText(jumlah);
@@ -71,30 +76,33 @@ public class DetailSellActivity extends AppCompatActivity {
         tv_deskripsi_detail.setText(deskripsi);
         tv_jmlHarga.setText("Rp. "+harga);
 
+        //convert byte[] ke bitmap
         Bitmap bmp = BitmapFactory.decodeByteArray(image, 0, image.length);
         iv_gambar_detail.setImageBitmap(bmp);
 
+        //cek jika stok barang 0
         if(Integer.parseInt(jumlah)==0){
             tv_jmlBeli.setText("0");
             tv_jmlHarga.setText("Rp. 0");
-            plus.setEnabled(false);
+            plus.setEnabled(false);     //disable tombol plus jika barang 0
         }
 
-        if(Integer.parseInt(jumlah)==1){plus.setEnabled(false);}
+        if(Integer.parseInt(jumlah)==1){plus.setEnabled(false);}        //jika stok 1 disable tombol tambah
         plus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                minus.setEnabled(true);
+                minus.setEnabled(true); //setelah barang ditambah tombol kurang jadi aktif
 
-
+                // number format ###.###.###
                 NumberFormat nf = NumberFormat.getNumberInstance();
                 nf.setMaximumFractionDigits(0);
 
-                String sumStr = tv_jmlBeli.getText().toString();
-                int sum = Integer.valueOf(sumStr);
-                if(sum == (Integer.parseInt(jumlah)-1)){
+                String sumStr = tv_jmlBeli.getText().toString();        //ambil jumlah beli dari xml view
+                int sum = Integer.valueOf(sumStr);          //convert to int
+                if(sum == (Integer.parseInt(jumlah)-1)){        //jika jumlah barang == stok maka tombol tambah mati
                     plus.setEnabled(false);
                 }
+                //fungsi tambah barang
                 sum += 1;
                 long sumPrc = Integer.parseInt(harga.replace(",",""));
                 sumPrc *= sum;
@@ -106,7 +114,7 @@ public class DetailSellActivity extends AppCompatActivity {
             }
         });
 
-        minus.setEnabled(false);
+        minus.setEnabled(false); //default tombol minus mati karena jml beli baru satu
         minus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -133,11 +141,14 @@ public class DetailSellActivity extends AppCompatActivity {
 
         if(Integer.parseInt(jumlah)<=0){buy.setEnabled(false);} //mematikan tombol nuy ketika stok habis
 
+        //ketika tombol beli di klik
         buy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String jmlHarga = tv_jmlHarga.getText().toString();
-                String jmlBeli = tv_jmlBeli.getText().toString();
+                String jmlHarga = tv_jmlHarga.getText().toString();     //ambil jml harga
+                String jmlBeli = tv_jmlBeli.getText().toString();       //ambil jml beli
+
+                //munculkan konfirmasi pemesanan
                 AlertDialog.Builder builder = new AlertDialog.Builder(DetailSellActivity.this);
                 builder.setCancelable(true);
                 builder.setTitle("Konfirmasi Pemesanan");

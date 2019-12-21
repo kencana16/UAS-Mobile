@@ -54,7 +54,7 @@ public class HomeActivity extends AppCompatActivity {
         btnExit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(HomeActivity.this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(HomeActivity.this);       //alert ketika ingin keluar
                 builder.setCancelable(true);
                 builder.setTitle("Peringatan");
                 builder.setMessage("Yakin ingin Keluar");
