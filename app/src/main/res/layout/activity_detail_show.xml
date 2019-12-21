@@ -149,28 +149,43 @@ Another interesting fact is that if the error functionality has not been enabled
 
         </RelativeLayout>
     </ScrollView>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:layout_alignParentBottom="true"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp">
-        <Button
-            android:id="@+id/btn_edit"
-            android:layout_width="100dp"
-            android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@drawable/accent_primary_dark"/>
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Edit"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="5dp"/>
-        <Button
-            android:id="@+id/btn_delete"
-            android:layout_width="100dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="Hapus"
-            android:layout_marginEnd="10dp"
-            android:layout_marginStart="5dp"/>
+            android:background="@color/white"
+            android:layout_alignParentBottom="true"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp">
+            <Button
+                android:id="@+id/btn_edit"
+                android:layout_width="100dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_btn_gradient"
+                android:textColor="@color/white"
+                android:layout_height="wrap_content"
+                android:text="Edit"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="5dp"/>
+            <Button
+                android:id="@+id/btn_delete"
+                android:layout_width="100dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_btn_gradient"
+                android:textColor="@color/white"
+                android:layout_height="wrap_content"
+                android:text="Hapus"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="5dp"/>
+        </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

@@ -128,28 +128,43 @@
 
         </LinearLayout>
     </ScrollView>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:paddingBottom="10dp"
-        android:paddingTop="10dp"
+        android:orientation="vertical"
         android:layout_alignParentBottom="true">
-        <Button
-            android:id="@+id/btn_back_edit"
-            android:layout_width="wrap_content"
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@drawable/accent_primary_dark"/>
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="5dp"
-            android:layout_weight="1"
-            android:text="Batal"/>
-        <Button
-            android:id="@+id/btn_save_edit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="10dp"
-            android:layout_weight="1"
-            android:text="Simpan"/>
+            android:background="@color/white"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:layout_alignParentBottom="true">
+            <Button
+                android:id="@+id/btn_back_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_btn_gradient"
+                android:textColor="@color/white"
+                android:text="Batal"/>
+            <Button
+                android:id="@+id/btn_save_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_btn_gradient"
+                android:textColor="@color/white"
+                android:text="Simpan"/>
+        </LinearLayout>
     </LinearLayout>
 </RelativeLayout>
