@@ -50,7 +50,7 @@ public class ShowDataActivity extends AppCompatActivity {
             String jumlah = cursor.getString(3);
             String harga = nf.format(cursor.getDouble(4));
             byte[] image  = cursor.getBlob(5);
-            String deskripsi = cursor.getString(4);
+            String deskripsi = cursor.getString(6);
             //add to list
             list.add(new Barang(kode, nama, satuan, jumlah, harga, image,deskripsi));
         }
